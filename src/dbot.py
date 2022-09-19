@@ -31,4 +31,4 @@ if __name__ == "__main__":
     # client.add_cog(DndCommands(client))
     # client.add_cog(MusicCommands(client))
 
-    client.run('ODk5MTIwNzExMDQ4Nzg1OTUw.YWuJag.Mz9WxLGCwWxdDn_fWbFhIrj7Zbs')
+    client.run('')

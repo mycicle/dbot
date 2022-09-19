@@ -148,7 +148,7 @@ class dbot(discord.Client):
 if __name__ == "__main__":
     # try:
     client = dbot()
-    client.run('ODk5MTIwNzExMDQ4Nzg1OTUw.YWuJag.Mz9WxLGCwWxdDn_fWbFhIrj7Zbs')
+    client.run('')
     # except KeyboardInterrupt:
     #     try:
     #         sys.exit(0)

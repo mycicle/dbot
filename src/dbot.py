@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 
 from cogs.DndCommands import DndCommands
@@ -7,10 +8,12 @@ from cogs.MusicCommands import MusicCommands
 
 class dbot(commands.Bot):
     def __init__(self, command_prefix: str):
-        super().__init__(command_prefix)
-        self.add_cog(JokeCommands(self))
-        self.add_cog(DndCommands(self))
-        self.add_cog(MusicCommands(self))
+        super().__init__(command_prefix, intents=discord.Intents.all())
+
+    async def setup_hook(self):
+        await self.add_cog(JokeCommands(self))
+        await self.add_cog(DndCommands(self))
+        await self.add_cog(MusicCommands(self))
     
     async def on_ready(self):
         print("dbot ready")
@@ -27,8 +30,4 @@ class dbot(commands.Bot):
 
 if __name__ == "__main__":
     client = dbot('!')
-    # client.add_cog(JokeCommands(client))
-    # client.add_cog(DndCommands(client))
-    # client.add_cog(MusicCommands(client))
-
     client.run('')

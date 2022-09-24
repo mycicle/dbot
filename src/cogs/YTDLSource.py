@@ -86,5 +86,5 @@ class YTDLSource(discord.PCMVolumeTransformer):
         to_run = partial(ytdl.extract_info, url=data["webpage_url"], download=False)
         data = await loop.run_in_executor(None, to_run)
         ffmpeg = discord.FFmpegPCMAudio(data["url"])
-
-        return cls(ffmpeg, data=data, requester=requester)
+        proc = ffmpeg._process
+        return (proc, cls(ffmpeg, data=data, requester=requester))

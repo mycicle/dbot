@@ -1,6 +1,7 @@
 import random
 import asyncio
 import discord
+import itertools
 from discord.ext import commands
 
 from typing import Dict, List, Any
@@ -227,7 +228,7 @@ class MusicCommands(commands.Cog):
         fmt = '\n'.join(f"`{(upcoming.index(_)) + 1}.` [{_['title']}]({_['webpage_url']}) | ` {duration} Requested by: {_['requester']}`\n" for _ in upcoming)
         fmt = f"\n__Now Playing__:\n[{vc.source.title}]({vc.source.web_url}) | ` {duration} Requested by: {vc.source.requester}`\n\n__Up Next:__\n" + fmt + f"\n**{len(upcoming)} songs in queue**"
         embed = discord.Embed(title=f'Queue for {ctx.guild.name}', description=fmt, color=discord.Color.green())
-        embed.set_footer(text=f"{ctx.author.display_name}", icon_url=ctx.author.avatar_url)
+        embed.set_footer(text=f"{ctx.author.display_name}", icon_url=ctx.author.avatar)
 
         await ctx.send(embed=embed)
 

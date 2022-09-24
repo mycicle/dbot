@@ -41,7 +41,7 @@ class MusicPlayer:
                 # source was probably a stream and not downloaded
                 # so we should regather to prevent stream expiration
                 try:
-                    source = await YTDLSource.regather_stream(source, loop=self.bot.loop)
+                    (proc, source) = await YTDLSource.regather_stream(source, loop=self.bot.loop)
 
                 except Exception as e:
                     await self._channel.send(f"There was an error processing your song.\n"
@@ -57,7 +57,7 @@ class MusicPlayer:
             await self.next.wait()
 
             # make sure the FFMpeg process is cleaned up
-            source.cleanup()
+            proc.kill()
             self.current = None
         
     def destroy(self, guild):

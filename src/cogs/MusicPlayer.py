@@ -33,6 +33,9 @@ class MusicPlayer:
             try:
                 async with timeout(300):
                     source = await self.queue.get()
+                if len(self._guild.voice_client.channel.voice_states.keys()) <=1:
+                    self._cog.leave_()
+                
 
             except asyncio.TimeoutError:
                 return self.destroy(self._guild)

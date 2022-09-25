@@ -257,7 +257,7 @@ class MusicCommands(commands.Cog):
             duration = "%02dm %02ds" % (minutes, seconds)
 
         embed = discord.Embed(title="", description=f"[{vc.source.title}]({vc.source.web_url}) [{vc.source.requester.mention}] | `{duration}`", color=discord.Color.green())
-        embed.set_author(icon_url=self.bot.user.avatar_url, name=f"Now Playing 🎶")
+        embed.set_author(icon_url=self.bot.user.avatar, name=f"Now Playing 🎶")
         await ctx.send(embed=embed)
 
     @commands.command(name='volume', aliases=['vol', 'v'], description="changes Kermit's volume")
